@@ -12,7 +12,7 @@
 	xmlns:exslt="http://exslt.org/common"
 	exclude-result-prefixes="gmx xsi gmd gco gml gts srv xlink exslt geonet">
 
-	<xsl:import href="metadata-iso19139.anzlic-fop.xsl"/>
+	<xsl:import href="metadata-fop.xsl"/>
 
 	<xsl:variable name="anzlicallgens" select="document('../schema/resources/Codelist/anzlic-allgens.xml')"/>
 
