@@ -9,7 +9,7 @@
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
-  <artifactId>schema-iso1919.anzlic</artifactId>
+  <artifactId>schema-iso19139.anzlic</artifactId>
   <name>GeoNetwork schema plugin for ISO19139.anzlic profile</name>
 
   <dependencies>
