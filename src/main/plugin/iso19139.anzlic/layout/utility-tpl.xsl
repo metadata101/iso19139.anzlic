@@ -5,7 +5,11 @@
   xmlns:xs="http://www.w3.org/2001/XMLSchema" exclude-result-prefixes="#all">
 
   <xsl:include href="utility-tpl-multilingual.xsl"/>
-	
+
+	<xsl:template name="get-iso19139.anzlic-is-service">
+		<xsl:call-template name="get-iso19139-is-service"/>
+	</xsl:template>
+
 	<xsl:template name="get-iso19139.anzlic-extents-as-json">
 		<xsl:call-template name="get-iso19139-extents-as-json"/>
 	</xsl:template>
