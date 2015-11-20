@@ -9,7 +9,7 @@
 										xmlns:xlink="http://www.w3.org/1999/xlink"
 										xmlns:skos="http://www.w3.org/2004/02/skos/core#">
 
-	<xsl:import href="../iso19139/index-fields.xsl"/>
+	<xsl:import href="../iso19139/index-fields/default.xsl"/>
 
 	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->		
 
