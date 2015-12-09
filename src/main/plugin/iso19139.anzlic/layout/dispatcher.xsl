@@ -22,7 +22,17 @@
   <!-- Dispatch to the current profile mode -->
   <xsl:template name="dispatch-iso19139.anzlic">
     <xsl:param name="base" as="node()"/>
-    <xsl:apply-templates mode="mode-iso19139.anzlic" select="$base"/>
+		<xsl:param name="overrideLabel" as="xs:string" required="no" select="''"/>
+
+    <!-- process in iso19139 mode - but we can override any templates
+         defined for iso19139 by importing that stylesheet into our
+         anzlic stylesheet - that way the iso19139 templates will have
+         a lower priority than ours -->
+    <xsl:apply-templates mode="mode-iso19139" select="$base">
+      <xsl:with-param name="overrideLabel" select="$overrideLabel"/>
+      <xsl:with-param name="schema" select="$schema"/>
+      <xsl:with-param name="labels" select="$iso19139.mcplabels"/>
+    </xsl:apply-templates>
   </xsl:template>
 
 

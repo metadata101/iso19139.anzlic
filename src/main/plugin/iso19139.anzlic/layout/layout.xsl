@@ -3,7 +3,6 @@
   xmlns:gmd="http://www.isotc211.org/2005/gmd" xmlns:gts="http://www.isotc211.org/2005/gts"
   xmlns:gco="http://www.isotc211.org/2005/gco" xmlns:gmx="http://www.isotc211.org/2005/gmx"
   xmlns:srv="http://www.isotc211.org/2005/srv" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:fra="http://www.cnig.gouv.fr/2005/fra"
   xmlns:gml="http://www.opengis.net/gml" xmlns:xlink="http://www.w3.org/1999/xlink"
   xmlns:gn="http://www.fao.org/geonetwork"
   xmlns:gn-fn-core="http://geonetwork-opensource.org/xsl/functions/core" 
@@ -11,23 +10,14 @@
   xmlns:gn-fn-iso19139="http://geonetwork-opensource.org/xsl/functions/profiles/iso19139"
   xmlns:exslt="http://exslt.org/common" exclude-result-prefixes="#all">
 
+	<xsl:import href="../../iso19139/layout/layout.xsl"/>
   <xsl:include href="utility-tpl.xsl"/>
+
 
   <xsl:variable name="iso19139.anzlicschema" select="/root/gui/schemas/iso19139.anzlic"/>
   <xsl:variable name="iso19139.anzliclabels" select="$iso19139.anzlicschema/labels"/>
   <xsl:variable name="iso19139.anzliccodelists" select="$iso19139.anzlicschema/codelists"/>
   <xsl:variable name="iso19139.anzlicstrings" select="$iso19139.anzlicschema/strings"/>
-
-  <!-- Visit all XML tree recursively -->
-  <xsl:template mode="mode-iso19139.anzlic" match="*|@*">
-    <xsl:param name="schema" select="$schema" required="no"/>
-    <xsl:param name="labels" select="$iso19139.anzliclabels" required="no"/>
-
-    <xsl:apply-templates mode="mode-iso19139" select=".">
-      <xsl:with-param name="schema" select="$schema"/>
-      <xsl:with-param name="labels" select="$labels"/>
-    </xsl:apply-templates>
-  </xsl:template>
 
   <!-- Match codelist values. Must use iso19139.anzlic because some 
 	     19139 codelists are extended in anzlic - if the codelist exists in
@@ -45,6 +35,7 @@
     <xsl:param name="schema" select="$schema" required="no"/>
     <xsl:param name="labels" select="$labels" required="no"/>
     <xsl:param name="codelists" select="$iso19139.anzliccodelists" required="no"/>
+
 
     <xsl:variable name="xpath" select="gn-fn-metadata:getXPath(.)"/>
     <xsl:variable name="isoType" select="if (../@gco:isoType) then ../@gco:isoType else ''"/>
