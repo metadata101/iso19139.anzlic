@@ -27,10 +27,12 @@ public class ISO19139ANZLICSchemaPlugin
                 AssociatedResourcesSchemaPlugin,
                 MultilingualSchemaPlugin,
                 ISOPlugin {
-    public static final String IDENTIFIER = "iso19139.mcp";
+    public static final String IDENTIFIER = "iso19139.anzlic";
 
     private static ImmutableSet<Namespace> allNamespaces;
     private static Map<String, Namespace> allTypenames;
+		private static Map<String, String> allExportFormats;
+
     static {
         allNamespaces = ImmutableSet.<Namespace>builder()
                 .add(ISO19139ANZLICNamespaces.GCO)
@@ -42,10 +44,14 @@ public class ISO19139ANZLICSchemaPlugin
                 .put("csw:Record", Namespace.getNamespace("csw", "http://www.opengis.net/cat/csw/2.0.2"))
                 .put("gmd:MD_Metadata", ISO19139ANZLICNamespaces.GMD)
                 .build();
+        
+        allExportFormats = ImmutableMap.<String, String>builder()
+            .put("convert/to19139.xsl", "metadata-iso19139.xml")
+            .build();
     }
 
     public ISO19139ANZLICSchemaPlugin() {
-        super(IDENTIFIER);
+        super(IDENTIFIER, allNamespaces);
     }
 
     /**
